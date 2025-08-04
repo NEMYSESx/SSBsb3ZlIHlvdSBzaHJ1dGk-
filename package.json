@@ -13,7 +13,8 @@
     "install-client": "cd client && npm install",
     "install-all": "npm install && npm run install-server && npm run install-client",
     "build-client": "cd client && npm run build",
-    "vercel-build": "cd client && npm install && npm run build"
+    "build": "bash ./build.sh",
+    "vercel-build": "node vercel-build.js"
   },
   "keywords": [
     "chat",

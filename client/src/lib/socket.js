@@ -4,12 +4,18 @@ let socket = null;
 
 export const connectSocket = (userId)=>{
     console.log("Connecting socket for user:", userId);
-    socket = io(import.meta.env.MODE ==="development" ? "http://localhost:4000":"", {
+    const socketUrl = import.meta.env.MODE === "development" ? "http://localhost:4000" : window.location.origin;
+    console.log("Socket URL:", socketUrl);
+    socket = io(socketUrl, {
         query: { userId: userId || "" },
         transports: ['websocket', 'polling'],
         upgrade: true,
         rememberUpgrade: true,
         path: "/socket.io"
+    });
+    
+    socket.on("connect_error", (error) => {
+        console.error("Socket connection error:", error.message);
     });
     
     // Make socket globally accessible for notifications

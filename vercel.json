@@ -13,6 +13,11 @@
       }
     }
   ],
+  "env": {
+    "MONGO_URI": "mongodb+srv://uuttssaavv26:utsav2611@chitchatwa.qncatg0.mongodb.net/?retryWrites=true&w=majority",
+    "NODE_ENV": "production",
+    "FRONTEND_URL": "https://chit-chat-tau-five.vercel.app"
+  },
   "routes": [
     {
       "src": "/api/v1/(.*)",
@@ -21,6 +26,9 @@
     {
       "src": "/socket.io/(.*)",
       "dest": "server/server.js"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
